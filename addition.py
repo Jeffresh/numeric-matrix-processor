@@ -20,10 +20,10 @@ def same_dimensions(n_rows_a, n_columns_a, n_rows_b, n_columns_b):
 def addition(mat_a, mat_b, n_rows, n_columns):
     return [[str(mat_a[i][j] + mat_b[i][j]) for j in range(n_columns)] for i in range(n_rows)]
 
+
 def print_matrix(mat):
     for row in mat:
         print(*row)
-
 
 
 if __name__ == '__main__':
