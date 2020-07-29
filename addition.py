@@ -13,6 +13,10 @@
 # Output the result in the same way but don't print the dimensions of the matrix.
 
 
+def same_dimensions(n_rows_a, n_columns_a, n_rows_b, n_columns_b):
+    return n_rows_a != n_rows_b or n_columns_a != n_columns_b
+
+
 if __name__ == '__main__':
     a, b = list(map(int, input().split()))
     mat_a = [list(map(int, input().split())) for _ in range(a)]
@@ -20,7 +24,7 @@ if __name__ == '__main__':
     mat_sum = []
     mat_b = [list(map(int, input().split())) for _ in range(c)]
 
-    if a != c or b != d:
+    if not same_dimensions(a, b, c, d):
         print('ERROR')
     else:
         mat_sum = [[str(mat_a[i][j] + mat_b[i][j]) for j in range(b)] for i in range(a)]
