@@ -17,6 +17,10 @@ def same_dimensions(n_rows_a, n_columns_a, n_rows_b, n_columns_b):
     return n_rows_a != n_rows_b or n_columns_a != n_columns_b
 
 
+def addition(mat_a, mat_b, n_rows, n_columns):
+    return [[str(mat_a[i][j] + mat_b[i][j]) for j in range(n_columns)] for i in range(n_rows)]
+
+
 if __name__ == '__main__':
     a, b = list(map(int, input().split()))
     mat_a = [list(map(int, input().split())) for _ in range(a)]
@@ -27,6 +31,6 @@ if __name__ == '__main__':
     if not same_dimensions(a, b, c, d):
         print('ERROR')
     else:
-        mat_sum = [[str(mat_a[i][j] + mat_b[i][j]) for j in range(b)] for i in range(a)]
+        mat_sum = addition(mat_a, mat_b, a, b)
         for row in mat_sum:
             print(*row)
