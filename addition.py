@@ -7,7 +7,8 @@
 #     Outputs their sum if it is possible to add them. Otherwise, it should output the ERROR message.
 #
 # Each matrix in the input is given in the following way: the first line contains the number of rows
-# nnn and the number of columns mmm. Then nnn lines follow, each containing mmm integers representing one row of the matrix.
+# nnn and the number of columns mmm. Then nnn lines follow, each containing mmm integers
+# representing one row of the matrix.
 #
 # Output the result in the same way but don't print the dimensions of the matrix.
 
