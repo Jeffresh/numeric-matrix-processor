@@ -9,3 +9,15 @@ Since matrices are tables of numbers, they are usually presented in code as 2D-a
 # Stage 2/6
 
 In this stage, you are going to implement the multiplication of a matrix by a constant. To do this, you need to multiply every element of the matrix by that constant. 
+
+# Stage 3/6 Matrix by matrix multiplication 
+
+The next stage is the multiplication of matrices. This operation is a little more complex because it’s not enough to simply multiply the corresponding elements.
+
+Unlike with addition, the sizes of the matrices can be different: the only restriction is that the number of columns in the first matrix equal the number of rows for the second matrix. Check out a comprehensive video by 3Blue1Brown about matrix multiplication.
+
+The multiplication of AAA matrix with nnn rows and mmm columns and BBB matrix with mmm rows and kkk columns is Cn,k=An,m×Bm,kC_{n , k} = A_{n , m} \times B_{m, k}Cn,k​=An,m​×Bm,k​.
+
+The resulting matrix has nnn rows and kkk columns, where every element is a sum of the multiplication of mmm elements across the rows of matrix AAA by mmm elements down the columns of matrix BBB.
+
+Another really important thing is that Ai,j×Bj,kA_{i , j} \times B_{j , k}Ai,j​×Bj,k​ is not equal to Bj,k×Ai,jB_{j, k} \times A_{i , j}Bj,k​×Ai,j​. In fact, these are not even possible to multiply if k≠i. k \ne i. k​=i. If k=i k = i k=i, the resulting matrices would still be different.
