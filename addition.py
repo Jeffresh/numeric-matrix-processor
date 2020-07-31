@@ -26,7 +26,7 @@ def print_matrix(mat):
         print(*row)
 
 
-if __name__ == '__main__':
+def add_matrices():
     a, b = list(map(int, input().split()))
     mat_a = [list(map(int, input().split())) for _ in range(a)]
     c, d = list(map(int, input().split()))
@@ -38,3 +38,7 @@ if __name__ == '__main__':
         mat_sum = addition(mat_a, mat_b, a, b)
         for row in mat_sum:
             print(*row)
+
+
+if __name__ == '__main__':
+    add_matrices()
