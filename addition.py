@@ -14,7 +14,7 @@
 
 
 def same_dimensions(n_rows_a, n_columns_a, n_rows_b, n_columns_b):
-    return n_rows_a != n_rows_b or n_columns_a != n_columns_b
+    return n_rows_a == n_rows_b and n_columns_a == n_columns_b
 
 
 def addition(mat_a, mat_b, n_rows, n_columns):
