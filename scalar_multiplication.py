@@ -17,11 +17,14 @@ def print_matrix(mat):
         print(*row)
 
 
-if __name__ == '__main__':
+def multiply_by_constant():
     a, b = list(map(int, input().split()))
     mat_a = [list(map(int, input().split())) for _ in range(a)]
     scalar = int(input())
 
     mat_sc = scalar_multiplication(mat_a, scalar)
+    print_matrix(mat_sc)
 
-    print(mat_sc)
+
+if __name__ == '__main__':
+    multiply_by_constant()
