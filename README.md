@@ -6,7 +6,7 @@ Matrices have a wide range of applications in programming: they're used for digi
 
 Since matrices are tables of numbers, they are usually presented in code as 2D-arrays. In this project, you will learn how to read and output matrices, do operations on them, and compute the determinant of a square matrix. At first, you will work with matrices with integer elements, and later the elements will be floating-point numbers.
 
-# Stage 2/6
+# Stage 2/6 Multiplication by scalar
 
 In this stage, you are going to implement the multiplication of a matrix by a constant. To do this, you need to multiply every element of the matrix by that constant. 
 
@@ -21,3 +21,14 @@ The multiplication of AAA matrix with nnn rows and mmm columns and BBB matrix wi
 The resulting matrix has nnn rows and kkk columns, where every element is a sum of the multiplication of mmm elements across the rows of matrix AAA by mmm elements down the columns of matrix BBB.
 
 Another really important thing is that Ai,j×Bj,kA_{i , j} \times B_{j , k}Ai,j​×Bj,k​ is not equal to Bj,k×Ai,jB_{j, k} \times A_{i , j}Bj,k​×Ai,j​. In fact, these are not even possible to multiply if k≠i. k \ne i. k​=i. If k=i k = i k=i, the resulting matrices would still be different.
+
+
+# Stage 4/6: Transpose 
+In this stage, you should implement matrix transposition. Matrix transposition is an operation in linear algebra that replaces rows with columns and returns a new matrix as a result. This is an operation on just a single matrix.
+
+In math, there is only one type of matrix transposition: transposition along the main diagonal. In this stage, you should implement the other three types of transposition to practice your array skills. These four types are:
+
+- transposition along the main diagonal
+- transposition along the diagonal
+- transposition along the vertical line
+- transposition along the horizontal line
