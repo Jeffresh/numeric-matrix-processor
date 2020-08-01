@@ -30,11 +30,9 @@ class MatrixProcessor:
 
     def binary_operation_input(self):
         a, b = self.get_dimensions("Enter size of first matrix:")
-        print("Enter first matrix:")
-        mat_a = [list(map(float, input().split())) for _ in range(a)]
+        mat_a = self.get_matrix(a, "Enter first matrix:")
         c, d = self.get_dimensions("Enter size of second matrix:")
-        print("Enter second matrix:")
-        mat_b = [list(map(float, input().split())) for _ in range(c)]
+        mat_b = self.get_matrix(c, "Enter second matrix:")
 
         return a, b, c, d, mat_a, mat_b
 
@@ -63,11 +61,19 @@ class MatrixProcessor:
     def get_dimensions(self, message):
         return list(map(int, input(message).split()))
 
-    def get_matrix(self, n_rows):
+    def get_matrix(self, n_rows, message):
+        print(message)
         return [list(map(float, input().split())) for _ in range(n_rows)]
 
     def submenu_transpose(self):
-        pass
+        print("1. Main diagonal\n2. Side diagonal\n3. Vertical line\n4. Horizontal line")
+        choice = input("Your choice:")
+        res_mat = None
+
+        if choice in ['1', '2', '3', '4']:
+            res_mat = self.get_transpose(choice)
+
+        return res_mat
 
     def menu(self):
         while True:
