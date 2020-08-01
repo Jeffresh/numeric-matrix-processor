@@ -70,13 +70,13 @@ class MatrixProcessor:
             res_mat = None
             if MatrixProcessor.check_input(choice):
                 self.action = choice
-                if self.action == '0':
+                if self.action == MatrixProcessor.OPTIONS[0]:
                     exit()
-                elif self.action == '1':
+                elif self.action == MatrixProcessor.OPTIONS[1]:
                     res_mat = self.add_matrices()
-                elif self.action == '2':
+                elif self.action == MatrixProcessor.OPTIONS[2]:
                     res_mat = self.multiply_by_constant()
-                elif self.action == '3':
+                elif self.action == MatrixProcessor.OPTIONS[3]:
                     res_mat = self.multiply_matrices()
                 elif self.action == MatrixProcessor.OPTIONS[4]:
                     res_mat = self.submenu_transpose()
