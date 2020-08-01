@@ -29,10 +29,10 @@ class MatrixProcessor:
             print(*row)
 
     def binary_operation_input(self):
-        a, b = list(map(int, input("Enter size of first matrix:").split()))
+        a, b = self.get_dimensions("Enter size of first matrix:")
         print("Enter first matrix:")
         mat_a = [list(map(float, input().split())) for _ in range(a)]
-        c, d = list(map(int, input("Enter size of second matrix:").split()))
+        c, d = self.get_dimensions("Enter size of second matrix:")
         print("Enter second matrix:")
         mat_b = [list(map(float, input().split())) for _ in range(c)]
 
@@ -54,11 +54,17 @@ class MatrixProcessor:
             return self.dot_product(mat_a, mat_b, b, a, d)
 
     def multiply_by_constant(self):
-        a, b = list(map(int, input("Enter size of matrix:").split()))
-        mat_a = [list(map(float, input("").split())) for _ in range(a)]
+        a, b = self.get_dimensions("Enter size of matrix:")
+        mat_a = self.get_matrix(a)
         scalar = float(input())
 
         return self.scalar_multiplication(mat_a, scalar)
+
+    def get_dimensions(self, message):
+        return list(map(int, input(message).split()))
+
+    def get_matrix(self, n_rows):
+        return [list(map(float, input().split())) for _ in range(n_rows)]
 
     def submenu_transpose(self):
         pass
