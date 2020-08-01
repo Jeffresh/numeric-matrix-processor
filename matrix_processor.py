@@ -53,7 +53,7 @@ class MatrixProcessor:
 
     def multiply_by_constant(self):
         a, b = self.get_dimensions("Enter size of matrix:")
-        mat_a = self.get_matrix(a)
+        mat_a = self.get_matrix(a, "Enter matrix:")
         scalar = float(input())
 
         return self.scalar_multiplication(mat_a, scalar)
@@ -64,6 +64,21 @@ class MatrixProcessor:
     def get_matrix(self, n_rows, message):
         print(message)
         return [list(map(float, input().split())) for _ in range(n_rows)]
+
+    def get_transpose(self, choice):
+        n_rows, n_cols = self.get_dimensions("Enter matrix size:")
+        mat = self.get_matrix(n_rows, 'Enter matrix:')
+        transposed = None
+        if choice == '1':
+            transposed = [[mat[i][j] for i in range(n_rows)] for j in range(n_cols)]
+        if choice == '2':
+            transposed = [[mat[i][j] for i in range(n_rows - 1, -1, -1)] for j in range(n_cols - 1, -1, -1)]
+        if choice == '3':
+            transposed = [[mat[i][j] for j in range(n_cols - 1, -1, -1)] for i in range(n_rows)]
+        if choice == '4':
+            transposed = [[mat[i][j] for j in range(n_cols)] for i in range(n_cols - 1, -1, -1)]
+
+        return transposed
 
     def submenu_transpose(self):
         print("1. Main diagonal\n2. Side diagonal\n3. Vertical line\n4. Horizontal line")
