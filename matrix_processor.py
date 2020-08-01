@@ -8,23 +8,29 @@ class MatrixProcessor:
     def check_input(option):
         return option in MatrixProcessor.OPTIONS
 
-    def same_dimensions(self, n_rows_a, n_columns_a, n_rows_b, n_columns_b):
+    @staticmethod
+    def same_dimensions(n_rows_a, n_columns_a, n_rows_b, n_columns_b):
         return n_rows_a == n_rows_b and n_columns_a == n_columns_b
 
-    def mul_dimensions(self, n_columns_a, n_rows_b):
+    @staticmethod
+    def mul_dimensions(n_columns_a, n_rows_b):
         return n_columns_a == n_rows_b
 
-    def addition(self, mat_a, mat_b, n_rows, n_columns):
+    @staticmethod
+    def addition(mat_a, mat_b, n_rows, n_columns):
         return [[str(mat_a[i][j] + mat_b[i][j]) for j in range(n_columns)] for i in range(n_rows)]
 
-    def scalar_multiplication(self, mat, scalar):
+    @staticmethod
+    def scalar_multiplication(mat, scalar):
         return [list(map(lambda x: x * scalar, mat[i])) for i in range(len(mat))]
 
-    def dot_product(self, mat_a, mat_b, n_columns_a, n_rows_a, n_columns_b):
+    @staticmethod
+    def dot_product(mat_a, mat_b, n_columns_a, n_rows_a, n_columns_b):
         return [[sum([mat_a[k][j] * mat_b[j][i] for j in range(n_columns_a)]) for i in range(n_columns_b)] for k in
                 range(n_rows_a)]
 
-    def print_matrix(self, mat):
+    @staticmethod
+    def print_matrix(mat):
         for row in mat:
             print(*row)
 
@@ -58,10 +64,12 @@ class MatrixProcessor:
 
         return self.scalar_multiplication(mat_a, scalar)
 
-    def get_dimensions(self, message):
+    @staticmethod
+    def get_dimensions(message):
         return list(map(int, input(message).split()))
 
-    def get_matrix(self, n_rows, message):
+    @staticmethod
+    def get_matrix(n_rows, message):
         print(message)
         return [list(map(float, input().split())) for _ in range(n_rows)]
 
