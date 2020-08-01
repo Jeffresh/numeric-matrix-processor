@@ -1,5 +1,5 @@
 class MatrixProcessor:
-    OPTIONS = ["0", "1", '2', '3']
+    OPTIONS = ["0", "1", '2', '3', '4']
 
     def __init__(self):
         self.action = None
@@ -60,6 +60,9 @@ class MatrixProcessor:
 
         return self.scalar_multiplication(mat_a, scalar)
 
+    def submenu_transpose(self):
+        pass
+
     def menu(self):
         while True:
             print("1. Add matrices\n2. Multiply matrix by a constant\n3. Multiply matrices\n0. Exit")
@@ -75,6 +78,9 @@ class MatrixProcessor:
                     res_mat = self.multiply_by_constant()
                 elif self.action == '3':
                     res_mat = self.multiply_matrices()
+                elif self.action == MatrixProcessor.OPTIONS[4]:
+                    res_mat = self.submenu_transpose()
+
                 print("The result is:")
                 self.print_matrix(res_mat)
             else:
