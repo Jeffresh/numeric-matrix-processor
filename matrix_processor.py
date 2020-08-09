@@ -1,5 +1,5 @@
 class MatrixProcessor:
-    OPTIONS = ["0", "1", '2', '3', '4']
+    OPTIONS = ["0", "1", '2', '3', '4', '5']
 
     def __init__(self):
         self.action = None
@@ -73,6 +73,30 @@ class MatrixProcessor:
         print(message)
         return [list(map(float, input().split())) for _ in range(n_rows)]
 
+    @staticmethod
+    def determinant(mat):
+        det = 0
+        if len(mat) == 1:
+            return mat[0][0]
+        if len(mat) == 2:
+            return mat[0][0] * mat[1][1] - mat[0][1] * mat[1][0]
+        else:
+            for j in range(len(mat[0])):
+                sub_mat = [row[:] for row in mat]
+                sub_mat.pop(0)
+                for row in range(len(sub_mat)):
+                    sub_mat[row].pop(j)
+
+                det += mat[0][j] * (-1) ** (1 + j + 1) * MatrixProcessor.determinant(sub_mat)
+
+        return det
+
+    def get_determinant(self):
+        a, b = self.get_dimensions("Enter size of matrix:")
+        mat_a = self.get_matrix(a, "Enter matrix:")
+
+        return self.determinant(mat_a)
+
     def get_transpose(self, choice):
         n_rows, n_cols = self.get_dimensions("Enter matrix size:")
         mat = self.get_matrix(n_rows, 'Enter matrix:')
@@ -99,6 +123,7 @@ class MatrixProcessor:
         return res_mat
 
     def menu(self):
+        res = None
         while True:
             print("1. Add matrices\n2. Multiply matrix by a constant\n3. Multiply matrices\n0. Exit")
             choice = input('Your choice:')
@@ -115,9 +140,14 @@ class MatrixProcessor:
                     res_mat = self.multiply_matrices()
                 elif self.action == MatrixProcessor.OPTIONS[4]:
                     res_mat = self.submenu_transpose()
+                elif self.action == MatrixProcessor.OPTIONS[5]:
+                    res = self.get_determinant()
 
                 print("The result is:")
-                self.print_matrix(res_mat)
+                if not res:
+                    self.print_matrix(res_mat)
+                else:
+                    print(res)
             else:
                 raise ValueError('This option doesnt exist')
 
