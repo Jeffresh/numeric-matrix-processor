@@ -32,3 +32,6 @@ In math, there is only one type of matrix transposition: transposition along the
 - transposition along the diagonal
 - transposition along the vertical line
 - transposition along the horizontal line
+
+# Stage 5/6: Determined!
+In this stage, you should write a program that calculates a determinant of a matrix. You can check out some videos about linear algebra to understand the essence of the determinant and why it is important. To understand how to actually calculate the determinant of any square matrix, watch a video about minors and cofactors and computing the nxn determinant.
