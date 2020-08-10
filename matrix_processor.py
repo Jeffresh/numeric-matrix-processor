@@ -97,6 +97,10 @@ class MatrixProcessor:
 
         return self.determinant(mat_a)
 
+    @staticmethod
+    def transpose(mat):
+        return [[mat[i][j] for i in range(len(mat))] for j in range(len(mat[0]))]
+
     def get_transpose(self, choice):
         n_rows, n_cols = self.get_dimensions("Enter matrix size:")
         mat = self.get_matrix(n_rows, 'Enter matrix:')
