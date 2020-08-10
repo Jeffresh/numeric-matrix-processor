@@ -35,3 +35,12 @@ In math, there is only one type of matrix transposition: transposition along the
 
 # Stage 5/6: Determined!
 In this stage, you should write a program that calculates a determinant of a matrix. You can check out some videos about linear algebra to understand the essence of the determinant and why it is important. To understand how to actually calculate the determinant of any square matrix, watch a video about minors and cofactors and computing the nxn determinant.
+
+# Stage 6/6: Inverse matrix 
+In this stage, you should find the inverse of a matrix.
+
+The inverse matrix A−1 A^{−1} A−1 is the matrix whose product with the original matrix AAA is equal to the identity matrix.
+
+The inverse of a matrix can be found using this formula:
+
+A−1=1det(A)×CT A^{-1} = \dfrac{1}{det(A)} \times C^T A−1=det(A)1​×CT
