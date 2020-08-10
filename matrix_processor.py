@@ -74,6 +74,14 @@ class MatrixProcessor:
         return [list(map(float, input().split())) for _ in range(n_rows)]
 
     @staticmethod
+    def get_minor(mat, column):
+        sub_mat = [row[:] for row in mat]
+        sub_mat.pop(0)
+        for row in range(len(sub_mat)):
+            sub_mat[row].pop(column)
+        return sub_mat
+
+    @staticmethod
     def determinant(mat):
         det = 0
         if len(mat) == 1:
@@ -82,12 +90,7 @@ class MatrixProcessor:
             return mat[0][0] * mat[1][1] - mat[0][1] * mat[1][0]
         else:
             for j in range(len(mat[0])):
-                sub_mat = [row[:] for row in mat]
-                sub_mat.pop(0)
-                for row in range(len(sub_mat)):
-                    sub_mat[row].pop(j)
-
-                det += mat[0][j] * (-1) ** (1 + j + 1) * MatrixProcessor.determinant(sub_mat)
+                det += mat[0][j] * (-1) ** (1 + j + 1) * MatrixProcessor.determinant(MatrixProcessor.get_minor(mat, j))
 
         return det
 
