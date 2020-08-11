@@ -44,3 +44,5 @@ The inverse matrix A−1 A^{−1} A−1 is the matrix whose product with the ori
 The inverse of a matrix can be found using this formula:
 
 A−1=1det(A)×CT A^{-1} = \dfrac{1}{det(A)} \times C^T A−1=det(A)1​×CT
+
+# This project is a part of the following track Python Developer on Jetbrains Academy
