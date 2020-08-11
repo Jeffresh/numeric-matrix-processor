@@ -1,5 +1,5 @@
 class MatrixProcessor:
-    OPTIONS = ["0", "1", '2', '3', '4', '5']
+    OPTIONS = ["0", "1", '2', '3', '4', '5', '6']
 
     def __init__(self):
         self.action = None
@@ -7,6 +7,15 @@ class MatrixProcessor:
     @staticmethod
     def check_input(option):
         return option in MatrixProcessor.OPTIONS
+
+    @staticmethod
+    def get_dimensions(message):
+        return list(map(int, input(message).split()))
+
+    @staticmethod
+    def get_matrix(n_rows, message):
+        print(message)
+        return [list(map(float, input().split())) for _ in range(n_rows)]
 
     @staticmethod
     def same_dimensions(n_rows_a, n_columns_a, n_rows_b, n_columns_b):
@@ -18,11 +27,15 @@ class MatrixProcessor:
 
     @staticmethod
     def addition(mat_a, mat_b, n_rows, n_columns):
-        return [[str(mat_a[i][j] + mat_b[i][j]) for j in range(n_columns)] for i in range(n_rows)]
+        return [[mat_a[i][j] + mat_b[i][j] for j in range(n_columns)] for i in range(n_rows)]
 
     @staticmethod
     def scalar_multiplication(mat, scalar):
-        return [list(map(lambda x: x * scalar, mat[i])) for i in range(len(mat))]
+        try:
+            return [list(map(lambda x: x * scalar, mat[i])) for i in range(len(mat))]
+        except:
+            print(mat)
+            print(scalar)
 
     @staticmethod
     def dot_product(mat_a, mat_b, n_columns_a, n_rows_a, n_columns_b):
@@ -65,18 +78,9 @@ class MatrixProcessor:
         return self.scalar_multiplication(mat_a, scalar)
 
     @staticmethod
-    def get_dimensions(message):
-        return list(map(int, input(message).split()))
-
-    @staticmethod
-    def get_matrix(n_rows, message):
-        print(message)
-        return [list(map(float, input().split())) for _ in range(n_rows)]
-
-    @staticmethod
-    def get_minor(mat, column):
+    def get_minor(mat, row, column):
         sub_mat = [row[:] for row in mat]
-        sub_mat.pop(0)
+        sub_mat.pop(row)
         for row in range(len(sub_mat)):
             sub_mat[row].pop(column)
         return sub_mat
@@ -90,7 +94,8 @@ class MatrixProcessor:
             return mat[0][0] * mat[1][1] - mat[0][1] * mat[1][0]
         else:
             for j in range(len(mat[0])):
-                det += mat[0][j] * (-1) ** (1 + j + 1) * MatrixProcessor.determinant(MatrixProcessor.get_minor(mat, j))
+                det += mat[0][j] * (-1) ** (1 + j + 1) * MatrixProcessor.determinant(
+                    MatrixProcessor.get_minor(mat, 0, j))
 
         return det
 
@@ -99,6 +104,31 @@ class MatrixProcessor:
         mat_a = self.get_matrix(a, "Enter matrix:")
 
         return self.determinant(mat_a)
+
+    def get_inverse(self):
+        a, b = self.get_dimensions("Enter size of matrix:")
+        mat_a = self.get_matrix(a, "Enter matrix:")
+
+        return self.inverse(mat_a)
+
+    @staticmethod
+    def adj_mat(mat):
+        adj = []
+        for i in range(len(mat)):
+            adj.append(
+                [(-1) ** ((i + 1) + j + 1) * MatrixProcessor.determinant(MatrixProcessor.get_minor(mat, i, j)) for j in
+                 range(len(mat[0]))])
+        return adj
+
+    @staticmethod
+    def inverse(mat):
+        determinant = MatrixProcessor.determinant(mat)
+        if determinant:
+            return MatrixProcessor.scalar_multiplication(MatrixProcessor.transpose(MatrixProcessor.adj_mat(mat)),
+                                                         1 / determinant)
+        else:
+            print("This matrix doesn't have an inverse.")
+            return None
 
     @staticmethod
     def transpose(mat):
@@ -149,9 +179,11 @@ class MatrixProcessor:
                     res_mat = self.submenu_transpose()
                 elif self.action == MatrixProcessor.OPTIONS[5]:
                     res = self.get_determinant()
+                elif self.action == MatrixProcessor.OPTIONS[6]:
+                    res_mat = self.get_inverse()
 
                 print("The result is:")
-                if not res:
+                if not res and res_mat:
                     self.print_matrix(res_mat)
                 else:
                     print(res)
